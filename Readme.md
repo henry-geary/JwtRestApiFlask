@@ -9,12 +9,11 @@
 #### Tests: 
 * unittest
 
-#### [Link a DockerHub de la app]()
 
-#### [Link a Github de la app]()
+#### [Link al repo en  Github](https://github.com/henry-geary/JwtRestApiFlask)
 <hr/>
 
-#### Dentro de 
+#### Dentro de ./resourses se encuentra la coleccion de POSTMAN 
 
 <hr/>
 

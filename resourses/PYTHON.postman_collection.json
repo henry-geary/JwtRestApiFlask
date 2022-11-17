@@ -1,0 +1,216 @@
+{
+	"info": {
+		"_postman_id": "4d60a713-5503-4a7b-86b1-50fba9431530",
+		"name": "PYTHON",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PRACTICANDO",
+			"item": [
+				{
+					"name": "ping",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Nelson Hernandez\",\n    \"password\": \"1234\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:4000/api/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "testToken",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik5lbHNvbiBIZXJuYW5kZXoiLCJwYXNzd29yZCI6IjEyMzQiLCJleHAiOjE2NjgyOTEyNjN9.ZIOsDE2n43HJ2WbjtiJZ7NHWTBDsACWFWO4m3VkcpsY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/verify/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"verify",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pingRedis",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "queuePush",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"msg\":\"mentiralaverdad\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:4000/api/queue/push",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"queue",
+								"push"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "queuePop",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:4000/api/queue/pop",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"queue",
+								"pop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "count",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"function add0(number){",
+							"    if (number<10)",
+							"    {return \"0\"+number}",
+							"    return number",
+							"}",
+							"",
+							"let current = new Date();   ",
+							"let cDate = add0(current.getDate()) + '-' + add0((current.getMonth() + 1)) + '-' + add0(current.getFullYear());",
+							"let date = cDate;",
+							"",
+							"pm.globals.set(\"current_date\", date);",
+							"pm.globals.set(\"current_timestamp\", date+\" 10:15:22\");",
+							"",
+							" current = new Date(); ",
+							" current.setDate(current.getDate()-5)  ",
+							" cDate = cDate = add0(current.getDate()) + '-' + add0((current.getMonth() + 1)) + '-' + add0(current.getFullYear());",
+							" date = cDate;",
+							"",
+							"pm.globals.set(\"current_date_5\", date);",
+							"pm.globals.set(\"current_timestamp_5\", date+\" 10:15:22\");",
+							"",
+							" current = new Date();   ",
+							" current.setDate(current.getDate()+15)",
+							" cDate = cDate = add0(current.getDate()) + '-' + add0((current.getMonth() + 1)) + '-' + add0(current.getFullYear());",
+							" date = cDate;",
+							"",
+							"pm.globals.set(\"current_date_15\", date);",
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
