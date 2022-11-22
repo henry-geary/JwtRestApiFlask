@@ -1,5 +1,5 @@
 try:
-    from main import app
+    from app.__main__ import app
     import unittest
     import requests
     from os import getenv

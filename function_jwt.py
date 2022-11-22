@@ -19,6 +19,7 @@ def write_token(data: dict):
 def validate_token(token, output=False):
     try:
         if output:
+            print(decode(token, key=getenv("SECRET"), algorithms=["HS256"]))
             return decode(token, key=getenv("SECRET"), algorithms=["HS256"])
         decode(token, key=getenv("SECRET"), algorithms=["HS256"])
     except exceptions.DecodeError:

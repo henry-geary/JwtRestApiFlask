@@ -5,6 +5,8 @@
 * pyjwt
 * python-dotenv
 * redis
+* pytest
+* poetry
 
 #### Tests: 
 * unittest
@@ -15,12 +17,19 @@
 
 #### Dentro de ./resourses se encuentra la coleccion de POSTMAN 
 
+## Levantar el proyecto
+
+* En terminal correr la siguiente linea de código.
+```
+   docker compose up
+```
+
 <hr/>
 
 ### Endpoints
 
 ### `Endpoint 001`: 
-#### Autenticarse como Admin para poder acceder a los demas endpoints
+#### Autenticarse como Admin para poder acceder a los demas endpoints (token expired date: 48hs)
 
 ### Sign:
 
