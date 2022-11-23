@@ -16,9 +16,9 @@ def test_push(client, mocker, req_json, status_code, app):
 
     mocker.patch("function_jwt.validate_token", return_value=True)
 
-    token = login_jwt(client)
 
-    response = client.post(mv.url_queue + "/post", json=req_json, headers={"Authorization": token})
+
+    response = client.post(mv.url_queue + "/post", json=req_json, headers={"Authorization": "token"})
     print(response)
     assert response.status_code == status_code
 
