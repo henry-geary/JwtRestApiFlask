@@ -1,13 +1,11 @@
 try:
-    from main import app
+    from app_project.main import app
     import unittest
     import requests
     from os import getenv
     from dotenv import load_dotenv
     import json
     from redis import Redis
-
-
 
 
 except Exception as e:

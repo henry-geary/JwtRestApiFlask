@@ -3,7 +3,7 @@ services:
   api:
     container_name: flask-container
     build: .
-    entrypoint: python main.py
+#    entrypoint: python __main__.py
     ports:
       - '4000:4000'
   redis:
