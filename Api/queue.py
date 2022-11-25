@@ -1,5 +1,5 @@
 import json
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request
 from Utils.function_jwt import validate_token
 import Services.queue as s
 from redis import Redis
