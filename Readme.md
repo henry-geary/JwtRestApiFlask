@@ -8,6 +8,9 @@ Crear archivo .env (usar de referencia el archivo .env.example)
     El secret puede ser cualquier palabra, mientras que el
     admin es el nombre con el que vas a tener que loguearte
     en el endpoint '/api/login'
+
+    Para correr los tests 
+    hay que poner 'jefecito' en la variable ADMIN 
     
 En la terminal:
 ```docker
@@ -172,6 +175,13 @@ Payload:
 <hr/>
 
 ## Tests
+### Comentarios generales
+
+ En caso de que al correr las pruebas no reconozca client o mocker, instalar
+
+     pip3 install pytest-flask
+     pip3 install pytest-mock
+
 
 ### Tests unitarios
     Los tests unitarios no requieren coneccion a internet,
