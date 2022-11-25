@@ -11,8 +11,26 @@
 				{
 					"name": "ping",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:4000/api/ping",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"ping"
+							]
+						}
 					},
 					"response": []
 				},
@@ -23,6 +41,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.globals.set(\"practicandoTokenJWT\", jsonData.token);",
 									""
 								],
 								"type": "text/javascript"
@@ -34,7 +54,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"Nelson Hernandez\",\n    \"password\": \"1234\"\n}\n",
+							"raw": "{\n    \"username\": \"jefecito\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -67,7 +87,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik5lbHNvbiBIZXJuYW5kZXoiLCJwYXNzd29yZCI6IjEyMzQiLCJleHAiOjE2NjgyOTEyNjN9.ZIOsDE2n43HJ2WbjtiJZ7NHWTBDsACWFWO4m3VkcpsY",
+									"value": "{{practicandoTokenJWT}}",
 									"type": "string"
 								}
 							]
@@ -93,19 +113,55 @@
 				{
 					"name": "pingRedis",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{practicandoTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:4000/api/queue/ping_redis",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"queue",
+								"ping_redis"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "queuePush",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{practicandoTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"msg\":\"mentiralaverdad\"\n}",
+							"raw": "{\n    \"msg\": \"HOLA\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -134,6 +190,16 @@
 				{
 					"name": "queuePop",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{practicandoTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -158,8 +224,34 @@
 				{
 					"name": "count",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{practicandoTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:4000/api/queue/count",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"queue",
+								"count"
+							]
+						}
 					},
 					"response": []
 				}
