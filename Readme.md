@@ -1,6 +1,14 @@
-### Challenge de ingreso Python
+### Challenge de ingreso Infra y Endpoint Security
+Desafio principal: Python Redis Docker Tests
 
 ### Para iniciar el proyecto:
+
+Crear archivo .env (usar de referencia el archivo .env.example)
+    
+    El secret puede ser cualquier palabra, mientras que el
+    admin es el nombre con el que vas a tener que loguearte
+    en el endpoint '/api/login'
+    
 En la terminal:
 ```docker
     docker compose build
@@ -28,7 +36,7 @@ En la terminal:
 #### [Link al repo en  Github](https://github.com/henry-geary/JwtRestApiFlask)
 <hr/>
 
-#### Dentro de ./resourses se encuentra la coleccion de POSTMAN 
+#### Dentro de <strong>./Utils/resourses</strong> se encuentra la coleccion de POSTMAN 
 
 <hr/>
 
@@ -162,6 +170,20 @@ Payload:
 ### Fin Endpoints
 
 <hr/>
+
+## Tests
+
+### Tests unitarios
+    Los tests unitarios no requieren coneccion a internet,
+    o estar corriendo el docker.
+    Se dividen en 2, uno sobre la funcionalidad del service.
+    Y el otro sobre las respuestas de los endpoints de Api.
+    
+
+### Test de integracion
+    Requiere que el proyecto este corriendo en docker.
+    
+
 
 
 

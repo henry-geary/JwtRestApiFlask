@@ -1,6 +1,5 @@
 import json
-from flask import Blueprint, request, jsonify
-from Utils.function_jwt import validate_token
+from flask import Blueprint, jsonify
 from redis import Redis
 
 redis_endpoint = Blueprint("redis_endpoint", __name__)
