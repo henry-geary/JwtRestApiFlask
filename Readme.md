@@ -39,7 +39,7 @@ En la terminal:
 #### [Link al repo en  Github](https://github.com/henry-geary/JwtRestApiFlask)
 <hr/>
 
-#### Dentro de <strong>./Utils/resourses</strong> se encuentra la coleccion de POSTMAN 
+#### Dentro de <strong>./Utils</strong> se encuentra la coleccion de POSTMAN 
 
 <hr/>
 
