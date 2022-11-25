@@ -1,35 +1,49 @@
-### Challenge de ingreso Python
+### Challenge de ingreso Infra y Endpoint Security
+Desafio principal: Python Redis Docker Tests
+
+### Para iniciar el proyecto:
+
+Crear archivo .env (usar de referencia el archivo .env.example)
+    
+    El secret puede ser cualquier palabra, mientras que el
+    admin es el nombre con el que vas a tener que loguearte
+    en el endpoint '/api/login'
+    
+En la terminal:
+```docker
+    docker compose build
+    
+    docker compose up
+```
+
+
 
 #### Librerias usadas:
 * Flask
 * pyjwt
 * python-dotenv
 * redis
-* pytest
-* poetry
+* requests
 
 #### Tests: 
-* unittest
+* pytest
+* pytest-redis
+* pytest-mock
+* pytest-flask
+* fakeredis
 
 
 #### [Link al repo en  Github](https://github.com/henry-geary/JwtRestApiFlask)
 <hr/>
 
-#### Dentro de ./resourses se encuentra la coleccion de POSTMAN 
-
-## Levantar el proyecto
-
-* En terminal correr la siguiente linea de código.
-```
-   docker compose up
-```
+#### Dentro de <strong>./Utils/resourses</strong> se encuentra la coleccion de POSTMAN 
 
 <hr/>
 
 ### Endpoints
 
 ### `Endpoint 001`: 
-#### Autenticarse como Admin para poder acceder a los demas endpoints (token expired date: 48hs)
+#### Autenticarse como Admin para poder acceder a los demas endpoints
 
 ### Sign:
 
@@ -96,7 +110,7 @@ Payload:
 Request:
 ```json
 {
-    "msg": "chau"
+    "msg": "hi! i am a message"
 }
 ```
 | Parámetros   | Tipo | Descripción/Ejemplo       |
@@ -157,19 +171,20 @@ Payload:
 
 <hr/>
 
+## Tests
+
+### Tests unitarios
+    Los tests unitarios no requieren coneccion a internet,
+    o estar corriendo el docker.
+    Se dividen en 2, uno sobre la funcionalidad del service.
+    Y el otro sobre las respuestas de los endpoints de Api.
+    
+
+### Test de integracion
+    Requiere que el proyecto este corriendo en docker.
+    
 
 
-
-```
-docker pull redis
-
-docker run -d --name miredis -p 6379:6379 redis
-
-docker pull rediscommander/redis-commander
-
-docker run --rm --name rd -d --env REDIS_HOSTS=local:host.docker.internal:6379 -p 8081:8081 rediscommander/redis-commander:latest  
-
-```
 
 
 

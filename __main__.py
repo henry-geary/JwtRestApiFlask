@@ -1,4 +1,4 @@
-from __init__ import create_app
+from __init import create_app
 from dotenv import load_dotenv
 
 app = create_app()
