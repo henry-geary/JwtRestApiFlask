@@ -52,7 +52,7 @@ def push_redis(redis: Redis, key, msg):
 # Endpoint
 def pop_service():
     try:
-        if r.llen('Queue') != 0:
+        if count_redis(r, 'Queue') != 0:
             deleted = pop_redis(r, "Queue")
             response = jsonify({"message": deleted})
             response.status_code = 200

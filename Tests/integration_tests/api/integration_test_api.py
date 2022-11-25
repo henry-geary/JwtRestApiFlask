@@ -5,6 +5,7 @@ try:
     import Tests.integration_tests.api.mock_variables as mv
     import requests
     import os
+
 except Exception as e:
     print("Some Modules are  Missing {} ".format(e))
 
@@ -24,7 +25,10 @@ def test_integration():
 
     # Verify push & pop & count endpoint
     count1 = requests.get(mv.URL_QUEUE + "/count", headers={"Authorization": f"Bearer {token}"})
-    assert count1.content.decode("utf-8") == '{\n  "count": 0,\n  "status": "ok"\n}\n'
+    assert count1.status_code == 200
+
+    # Set currentCount with the actual redis db massage count
+    currentCount = json.loads(count1.content.decode("utf-8"))["count"]
 
     requests.post(mv.URL_QUEUE + "/push", json=mv.msg_success, headers={"Authorization": f"Bearer {token}"})
     requests.post(mv.URL_QUEUE + "/push", json=mv.msg_success, headers={"Authorization": f"Bearer {token}"})
@@ -32,11 +36,9 @@ def test_integration():
     assert pop1.content.decode("utf-8") == '{\n  "message": "Boa Noite"\n}\n'
 
     count2 = requests.get(mv.URL_QUEUE + "/count", headers={"Authorization": f"Bearer {token}"})
-    assert count2.content.decode("utf-8") == '{\n  "count": 1,\n  "status": "ok"\n}\n'
+    # 1 more message added to the list and one more for currentCount
+    assert json.loads(count2.content.decode("utf-8"))["count"] == currentCount + 1
 
     requests.get(mv.URL_QUEUE + "/pop", headers={"Authorization": f"Bearer {token}"})
-    pop3 = requests.get(mv.URL_QUEUE + "/pop", headers={"Authorization": f"Bearer {token}"})
-    assert pop3.content.decode("utf-8") == '{\n  "message": "Queue is empty"\n}\n'
-
     count3 = requests.get(mv.URL_QUEUE + "/count", headers={"Authorization": f"Bearer {token}"})
-    assert count3.content.decode("utf-8") == '{\n  "count": 0,\n  "status": "ok"\n}\n'
+    assert json.loads(count3.content.decode("utf-8"))["count"] == currentCount

@@ -2,10 +2,10 @@ msg_success = {"msg": "The message test"}
 msg_non_string = {"msg": 15}
 msg_null = {"msg": None}
 
-data_login = {
-    "username": "Admin",
-    "password": "1234"
-}
+data_login = {"username": "jefecito"}
+bad_login_user = {"username": "Kafka"}
+bad_login_input = {"name": 321}
+
 
 key = 'Test'
 value = "The message test"

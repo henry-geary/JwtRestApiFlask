@@ -5,7 +5,7 @@ from flask import jsonify
 
 @pytest.fixture
 def login_env(monkeypatch):
-    monkeypatch.setenv('USERNAME', 'jefecito')
+    monkeypatch.setenv('ADMIN', 'jefecito')
     monkeypatch.setenv('SECRET', 'ayuda')
 
 
@@ -50,7 +50,7 @@ def msg():
     return 'Buenos dias'
 
 
-# END mocks for test_service_queue
+# END mocks for test_api_queue
 
 @pytest.fixture
 def auth(mocker):

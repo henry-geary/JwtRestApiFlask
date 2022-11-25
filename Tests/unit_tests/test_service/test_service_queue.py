@@ -1,4 +1,5 @@
 import fakeredis
+import pytest
 from Services import queue as q
 
 
@@ -21,3 +22,6 @@ def test_pop_fakeredis(key, msg):
 def test_count_fakeredis(key):
     assert q.count_redis(r_fake, key) == r_fake.llen(key)
 
+
+if __name__ == "__main__":
+    pytest.main()

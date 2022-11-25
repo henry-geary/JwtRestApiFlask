@@ -1,13 +1,28 @@
 ### Challenge de ingreso Python
 
+### Para iniciar el proyecto:
+En la terminal:
+```docker
+    docker compose build
+    
+    docker compose up
+```
+
+
+
 #### Librerias usadas:
 * Flask
 * pyjwt
 * python-dotenv
 * redis
+* requests
 
 #### Tests: 
-* unittest
+* pytest
+* pytest-redis
+* pytest-mock
+* pytest-flask
+* fakeredis
 
 
 #### [Link al repo en  Github](https://github.com/henry-geary/JwtRestApiFlask)
@@ -87,7 +102,7 @@ Payload:
 Request:
 ```json
 {
-    "msg": "chau"
+    "msg": "hi! i am a message"
 }
 ```
 | Parámetros   | Tipo | Descripción/Ejemplo       |
@@ -148,19 +163,6 @@ Payload:
 
 <hr/>
 
-
-
-
-```
-docker pull redis
-
-docker run -d --name miredis -p 6379:6379 redis
-
-docker pull rediscommander/redis-commander
-
-docker run --rm --name rd -d --env REDIS_HOSTS=local:host.docker.internal:6379 -p 8081:8081 rediscommander/redis-commander:latest  
-
-```
 
 
 
